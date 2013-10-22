@@ -84,7 +84,8 @@
  
  
 import os, sys, socket, struct, select, time
- 
+import smtplib
+
 # From /usr/include/linux/icmp.h; your milage may vary.
 ICMP_ECHO_REQUEST = 8 # Seems to be the same on Solaris.
  
@@ -219,8 +220,9 @@ def verbose_ping(dest_addr, timeout = 2, count = 4):
             print "get ping in %0.4fms" % delay
             if delay>4:
                 print "tooo sloww networkkkk....."
-    print
- 
+                s = smtplib.SMTP('110.44.113.253')
+                s.sendmail('bijayrajpant@lftechnology.com','ptuladhar@lftechnology.com',"tooo sloww networkkkk.....")
+
  
 if __name__ == '__main__':
     verbose_ping("192.168.1.1")
